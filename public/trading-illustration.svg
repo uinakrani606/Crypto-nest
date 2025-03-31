@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="500" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Elements -->
+    <circle cx="300" cy="250" r="200" fill="#1a1b3e" opacity="0.1"/>
+    <circle cx="300" cy="250" r="150" fill="#2a2b4e" opacity="0.1"/>
+    
+    <!-- Candlestick Chart -->
+    <g transform="translate(150, 150)">
+        <!-- Grid Lines -->
+        <path d="M0 0 H300" stroke="#2a2b4e" stroke-width="1" opacity="0.3"/>
+        <path d="M0 40 H300" stroke="#2a2b4e" stroke-width="1" opacity="0.3"/>
+        <path d="M0 80 H300" stroke="#2a2b4e" stroke-width="1" opacity="0.3"/>
+        <path d="M0 120 H300" stroke="#2a2b4e" stroke-width="1" opacity="0.3"/>
+        <path d="M0 160 H300" stroke="#2a2b4e" stroke-width="1" opacity="0.3"/>
+        
+        <!-- Candlesticks -->
+        <g fill="#4CAF50">
+            <rect x="20" y="40" width="10" height="40" fill="#4CAF50"/>
+            <line x1="25" y1="30" x2="25" y2="90" stroke="#4CAF50" stroke-width="2"/>
+        </g>
+        <g fill="#F44336">
+            <rect x="40" y="60" width="10" height="30" fill="#F44336"/>
+            <line x1="45" y1="50" x2="45" y2="100" stroke="#F44336" stroke-width="2"/>
+        </g>
+        <g fill="#4CAF50">
+            <rect x="60" y="70" width="10" height="35" fill="#4CAF50"/>
+            <line x1="65" y1="60" x2="65" y2="110" stroke="#4CAF50" stroke-width="2"/>
+        </g>
+        <g fill="#4CAF50">
+            <rect x="80" y="50" width="10" height="45" fill="#4CAF50"/>
+            <line x1="85" y1="40" x2="85" y2="100" stroke="#4CAF50" stroke-width="2"/>
+        </g>
+        <g fill="#F44336">
+            <rect x="100" y="80" width="10" height="25" fill="#F44336"/>
+            <line x1="105" y1="70" x2="105" y2="110" stroke="#F44336" stroke-width="2"/>
+        </g>
+    </g>
+
+    <!-- Trader Character -->
+    <g transform="translate(350, 200)">
+        <!-- Desk -->
+        <rect x="-50" y="50" width="120" height="10" fill="#3f3f6f" rx="2"/>
+        <rect x="-40" y="60" width="100" height="40" fill="#2a2b4e" rx="2"/>
+        
+        <!-- Monitor -->
+        <rect x="-30" y="-30" width="80" height="60" fill="#1a1b3e" rx="4"/>
+        <rect x="-25" y="-25" width="70" height="50" fill="#8b5cf6" opacity="0.2" rx="2"/>
+        
+        <!-- Person -->
+        <circle cx="10" cy="-50" r="15" fill="#8b5cf6"/>
+        <rect x="0" y="-35" width="20" height="30" fill="#8b5cf6" rx="5"/>
+        <rect x="-5" y="-5" width="30" height="20" fill="#8b5cf6" rx="5"/>
+    </g>
+
+    <!-- Floating Elements -->
+    <g>
+        <circle cx="150" cy="100" r="10" fill="#8b5cf6" opacity="0.2"/>
+        <circle cx="450" cy="400" r="15" fill="#8b5cf6" opacity="0.2"/>
+        <circle cx="500" cy="150" r="8" fill="#8b5cf6" opacity="0.2"/>
+        <circle cx="100" cy="350" r="12" fill="#8b5cf6" opacity="0.2"/>
+    </g>
+
+    <!-- Currency Symbols -->
+    <g fill="#8b5cf6" opacity="0.4" font-family="Arial" font-size="24">
+        <text x="50" y="150">$</text>
+        <text x="500" y="250">€</text>
+        <text x="250" y="400">£</text>
+    </g>
+</svg> 
