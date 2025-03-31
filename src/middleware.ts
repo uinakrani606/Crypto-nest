@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
 
@@ -28,5 +27,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/signin', '/signup']
+  matcher: ['/dashboard/:path*'] // Only protect dashboard routes
 }; 

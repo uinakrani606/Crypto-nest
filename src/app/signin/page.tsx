@@ -1,45 +1,40 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useSession, signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { signIn } from 'next-auth/react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import toast from 'react-hot-toast';
 import Image from 'next/image';
+import toast from 'react-hot-toast';
 
 export default function SignIn() {
   const router = useRouter();
-  const { status } = useSession();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (status === 'authenticated') {
-      router.replace('/dashboard');
-    }
-  }, [status, router]);
-
-  const handleSignIn = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
     try {
       const result = await signIn('credentials', {
         email,
         password,
-        redirect: false
+        redirect: false,
       });
 
       if (result?.error) {
-        toast.error(result.error);
-        return;
+        toast.error('Invalid email or password');
+      } else {
+        router.push(callbackUrl);
       }
-
-      router.replace('/dashboard');
     } catch (error) {
-      console.error('Sign in error:', error);
-      toast.error('An unexpected error occurred');
+      toast.error('An error occurred. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -57,13 +52,12 @@ export default function SignIn() {
             </p>
           </div>
 
-          <form onSubmit={handleSignIn} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <input
                 type="email"
+                name="email"
                 placeholder="Email Address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-[#1a1b3e] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
                 required
               />
@@ -72,9 +66,8 @@ export default function SignIn() {
             <div>
               <input
                 type="password"
+                name="password"
                 placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-[#1a1b3e] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
                 required
               />
